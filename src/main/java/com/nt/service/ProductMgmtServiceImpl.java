@@ -1,6 +1,8 @@
 package com.nt.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -31,14 +33,13 @@ public class ProductMgmtServiceImpl implements IProductMgmtService {
 	}
 
 	@Override
-	public List<Object[]> showProductsAndOffers() {
-		List<Product> listProd=prodRepo.findAll();
-		List<Offers> listOffers=offersRepo.findAll();
-		List<Object[]> combined = 
-			    IntStream.range(0, Math.min(listProd.size(), listOffers.size()))
-			             .mapToObj(i -> new Object[]{listProd.get(i), listOffers.get(i) })
-			             .collect(Collectors.toList());
-		return combined;
+	public Map<String, Object> showProductsAndOffers() {
+		Map<String, Object> result = new HashMap<>();
+
+		result.put("products", prodRepo.findAll());
+		result.put("offers", offersRepo.findAll());
+
+		return result;
 	}
 
 }

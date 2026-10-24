@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name="MUTLTIDB_PRODUCT")
 @Data
@@ -28,10 +30,12 @@ public class Product {
 	@Column(length = 30)
 	@NonNull
 	private String pname;
+
 	@NonNull
-	private  Double price;
+	@Column(precision = 12, scale = 2)
+	private BigDecimal price;
+
 	@NonNull
-	private  Double qty;
-	
+	private  Integer qty;
 
 }

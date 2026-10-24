@@ -38,10 +38,10 @@ public class OracleDBConfig {
 	@Primary
 	public  LocalContainerEntityManagerFactoryBean   createOracleEMF(EntityManagerFactoryBuilder builder) {
 		// prepare the required properites
-		Map<String,Object>  props=new HashMap();
-	    props.put("hibernate.dialect", "org.hibernate.dialect.OracleDialect");
+		Map<String, Object> props = new HashMap<>();
+		props.put("hibernate.dialect", "org.hibernate.dialect.OracleDialect");
 		props.put("hibernate.hbm2ddl.auto", "update");
-		props.put("hibernate.show_sql", "true");
+		props.put("hibernate.show_sql", false);
 		//create  LocalContainerEntityManagerFactoryBean class object
 		return builder.dataSource(createOraDs())
 				                 .packages("com.nt.entity.product")

@@ -1,4 +1,5 @@
 package com.nt.entity.offers;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
@@ -8,11 +9,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Digits;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 
 @Entity
 @Table(name="MUTLTIDB_OFFERS")
@@ -29,8 +33,14 @@ public class Offers {
 	@Column(length = 30)
 	@NonNull
 	private String oname;
+
 	@NonNull
-	private  Double discount;
+	@DecimalMin(value = "0.00", message = "Discount cannot be negative")
+	@DecimalMax(value = "100.00", message = "Discount cannot exceed 100")
+	@Digits(integer = 3, fraction = 2,
+			message = "Discount must have at most 2 decimal places")
+	@Column(precision = 5, scale = 2)
+	private BigDecimal discount;
 	@NonNull
 	private  LocalDate expiryDate;
 	

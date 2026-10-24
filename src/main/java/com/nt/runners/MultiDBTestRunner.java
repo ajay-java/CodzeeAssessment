@@ -1,14 +1,21 @@
 package com.nt.runners;
 
-import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import com.nt.service.IProductMgmtService;
 
 @Component
+@ConditionalOnProperty(
+		name = "app.runner.enabled",
+		havingValue = "true",
+		matchIfMissing = true
+)
 public class MultiDBTestRunner implements CommandLineRunner {
 	@Autowired
 	private  IProductMgmtService prodService;
@@ -26,11 +33,17 @@ public class MultiDBTestRunner implements CommandLineRunner {
 			e.printStackTrace();
 		}*/
 		try {
-			prodService.showProductsAndOffers().forEach(row->{
-				System.out.println(Arrays.toString(row));
-			});
-		}
-		catch(Exception e) {
+			Map<String, Object> result = prodService.showProductsAndOffers();
+
+			System.out.println("Products:");
+			((List<?>) result.get("products"))
+					.forEach(System.out::println);
+
+			System.out.println("Offers:");
+			((List<?>) result.get("offers"))
+					.forEach(System.out::println);
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}//run(-)
