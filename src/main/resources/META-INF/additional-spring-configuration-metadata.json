@@ -1,0 +1,47 @@
+{"properties": [
+  {
+    "name": "ora.ds.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'ora.ds.driver-class-name'"
+  },
+  {
+    "name": "mysql.ds.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'mysql.ds.driver-class-name'"
+  },
+  {
+    "name": "ora.ds.username",
+    "type": "java.lang.String",
+    "description": "A description for 'ora.ds.username'"
+  },
+  {
+    "name": "ora.ds.password",
+    "type": "java.lang.String",
+    "description": "A description for 'ora.ds.password'"
+  },
+  {
+    "name": "mysql.ds.password",
+    "type": "java.lang.String",
+    "description": "A description for 'mysql.ds.password'"
+  },
+  {
+    "name": "mysql.ds.url",
+    "type": "java.lang.String",
+    "description": "A description for 'mysql.ds.url'"
+  },
+  {
+    "name": "mysql.ds.username",
+    "type": "java.lang.String",
+    "description": "A description for 'mysql.ds.username'"
+  },
+  {
+    "name": "mysql.ds.jdbc-url",
+    "type": "java.lang.String",
+    "description": "A description for 'mysql.ds.jdbc-url'"
+  },
+  {
+    "name": "ora.ds.jdbc-url",
+    "type": "java.lang.String",
+    "description": "A description for 'ora.ds.jdbc-url'"
+  }
+]}
