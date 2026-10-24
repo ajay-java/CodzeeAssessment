@@ -5,12 +5,17 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import com.nt.service.IProductMgmtService;
 
 @Component
-
+@ConditionalOnProperty(
+		name = "app.runner.enabled",
+		havingValue = "true",
+		matchIfMissing = true
+)
 public class MultiDBTestRunner implements CommandLineRunner {
 	@Autowired
 	private  IProductMgmtService prodService;

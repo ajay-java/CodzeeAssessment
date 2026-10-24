@@ -1,15 +1,12 @@
 package com.nt;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
-@ConditionalOnProperty(
-		name = "app.runner.enabled",
-		havingValue = "true",
-		matchIfMissing = true
-)
+@ActiveProfiles("test")
 class BootDataJpaProj17InteractingWithTwoDBsApplicationTests {
 
 	@Test
