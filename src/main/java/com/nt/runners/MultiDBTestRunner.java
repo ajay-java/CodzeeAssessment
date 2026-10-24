@@ -1,6 +1,7 @@
 package com.nt.runners;
 
-import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -26,11 +27,17 @@ public class MultiDBTestRunner implements CommandLineRunner {
 			e.printStackTrace();
 		}*/
 		try {
-			prodService.showProductsAndOffers().forEach(row->{
-				System.out.println(Arrays.toString(row));
-			});
-		}
-		catch(Exception e) {
+			Map<String, Object> result = prodService.showProductsAndOffers();
+
+			System.out.println("Products:");
+			((List<?>) result.get("products"))
+					.forEach(System.out::println);
+
+			System.out.println("Offers:");
+			((List<?>) result.get("offers"))
+					.forEach(System.out::println);
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}//run(-)
