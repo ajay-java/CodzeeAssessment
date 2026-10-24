@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Digits;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,8 +35,11 @@ public class Offers {
 	private String oname;
 
 	@NonNull
-	@DecimalMin(value = "0.0", message = "Discount cannot be negative")
-	@DecimalMax(value = "100.0", message = "Discount cannot exceed 100")
+	@DecimalMin(value = "0.00", message = "Discount cannot be negative")
+	@DecimalMax(value = "100.00", message = "Discount cannot exceed 100")
+	@Digits(integer = 3, fraction = 2,
+			message = "Discount must have at most 2 decimal places")
+	@Column(precision = 5, scale = 2)
 	private BigDecimal discount;
 	@NonNull
 	private  LocalDate expiryDate;
