@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import com.nt.service.IProductMgmtService;
 
 @Component
+
 public class MultiDBTestRunner implements CommandLineRunner {
 	@Autowired
 	private  IProductMgmtService prodService;

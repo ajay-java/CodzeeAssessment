@@ -1,4 +1,5 @@
 package com.nt.entity.offers;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
@@ -13,6 +14,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 
 @Entity
 @Table(name="MUTLTIDB_OFFERS")
@@ -29,8 +32,11 @@ public class Offers {
 	@Column(length = 30)
 	@NonNull
 	private String oname;
+
 	@NonNull
-	private  Double discount;
+	@DecimalMin(value = "0.0", message = "Discount cannot be negative")
+	@DecimalMax(value = "100.0", message = "Discount cannot exceed 100")
+	private BigDecimal discount;
 	@NonNull
 	private  LocalDate expiryDate;
 	
